@@ -12,9 +12,9 @@ const userSchema = new Schema({
         required: true,
     },
     email: String,
-    itemsForSale: [productSchema],
-    orders: [orderSchema],
-    reviews: [reviewSchema],
+    itemsForSale: [productSchema.schema],
+    orders: [orderSchema.schema],
+    reviews: [reviewSchema.schema],
 });
 
 module.exports = mongoose.model('User', userSchema);
