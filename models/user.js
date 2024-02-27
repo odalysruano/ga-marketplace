@@ -13,6 +13,10 @@ const userSchema = new Schema({
   },
   email: String,
   avatar: String,
+  username: {
+    type: String,
+    required: true,
+  },
   itemsForSale: [productSchema.schema],
   orders: [orderSchema.schema],
   reviews: [reviewSchema.schema],
