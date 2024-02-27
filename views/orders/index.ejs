@@ -1,0 +1,33 @@
+<!-- views/cart.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+</head>
+<body>
+  <h1>Cart</h1>
+  <% if (orders.length === 0) { %>
+      <p>Your cart is empty.</p>
+  <% } else { %>
+      <ul>
+          <% orders.forEach(order => { %>
+              <li>
+                  <h2>Order ID: <%= order._id %></h2>
+                  <p>Product: <%= order.product %></p>
+                  <p>Quantity: <%= order.quantity %></p>
+                  <p>Price: $<%= order.price %></p>
+                  <form action="/orders/<%= order._id %>" method="POST">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button type="submit">Delete</button>
+                  </form>
+              </li>
+          <% }); %>
+      </ul>
+  <% } %>
+  <form action="/checkout" method="GET">
+      <button type="submit" <% if (isEmpty) { %> disabled <% } %>>Checkout</button>
+  </form>
+  <a href="/">Continue Shopping</a>
