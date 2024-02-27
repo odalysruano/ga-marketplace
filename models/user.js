@@ -18,12 +18,4 @@ const userSchema = new Schema({
   reviews: [reviewSchema.schema],
 });
 
-passport.serializeUser(function (user, cb) {
-  cb(null, user._id);
-});
-
-passport.deserializeUser(async function (userId, cb) {
-  cb(null, await User.findById(userId));
-});
-
 module.exports = mongoose.model("User", userSchema);

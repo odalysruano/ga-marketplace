@@ -4,11 +4,12 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var session = require("express-session");
-var passport = require("passport");
+var session = require('express-session');
+var passport = require('passport');
 
 require("dotenv").config();
 require("./config/database");
+require('./config/passport');
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
@@ -35,6 +36,10 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

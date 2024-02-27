@@ -1,6 +1,7 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const User = require("../models/user");
+const Products = require("../models/product");
 
 passport.use(
   new GoogleStrategy(
@@ -9,15 +10,10 @@ passport.use(
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: process.env.GOOGLE_CALLBACK,
     },
-
     async function (accessToken, refreshToken, profile, cb) {
-
       try {
-
         let user = await User.findOne({ googleId: profile.id });
-
         if (user) return cb(null, user);
-
         user = await User.create({
           name: profile.displayName,
           googleId: profile.id,
@@ -31,3 +27,11 @@ passport.use(
     }
   )
 );
+
+passport.serializeUser(function (user, cb) {
+  cb(null, user._id);
+});
+
+passport.deserializeUser(async function (userId, cb) {
+  cb(null, await User.findById(userId));
+});
