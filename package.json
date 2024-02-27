@@ -16,6 +16,7 @@
     "mongoose": "^8.2.0",
     "morgan": "~1.9.1",
     "override": "^0.0.1",
-    "passport": "^0.7.0"
+    "passport": "^0.7.0",
+    "passport-google-oauth": "^2.0.0"
   }
 }
