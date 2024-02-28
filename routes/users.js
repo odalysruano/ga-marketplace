@@ -9,6 +9,6 @@ router.get("/", function (req, res, next) {
 });
 
 // GET /users/:username - sellers shop page
-router.get('/:username', usersCtrl.shop);
+router.get("/:username", usersCtrl.shop);
 
 module.exports = router;

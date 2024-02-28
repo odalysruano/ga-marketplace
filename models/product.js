@@ -23,6 +23,7 @@ const productSchema = new Schema(
     seller: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
   },
   {
