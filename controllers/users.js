@@ -6,6 +6,7 @@ module.exports = {
     getUsr,
     usrItmPg,
     addItm,
+    rmvItm,
     shop,
 };
 
@@ -67,6 +68,25 @@ async function addItm(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Berver Error');
+    }
+}
+
+async function rmvItm(req, res) {
+    try {
+        const userId = req.params.userId;
+        const user = await User.findById(userId);
+        const itemIdsToRemove = req.body.itemIds;
+
+        user.itemsForSale = user.itemsForSale.filter(function(item) {
+            return !itemIdsToRemove.includes(item._id.toString());
+        });
+
+        await user.save();
+
+        res.redirect(`/users/${userId}`);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
     }
 }
 

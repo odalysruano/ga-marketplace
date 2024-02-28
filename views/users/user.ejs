@@ -21,26 +21,32 @@
 
 <h2>Items For Sale</h2>
 
-<div id="prv-wrap">
-  <table id="prv-itm">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% user.itemsForSale.slice(0, 5).forEach(function(item) { %>
-            <tr>
-                <td><%= item.name %></td>
-                <td><%= item.description %></td>
-                <td>$<%= item.price %></td>
-            </tr>
-        <% }); %>
-    </tbody>
-</table>
-</div>
+<form id="rmv-itm-form" method="POST" action="/users/<%= user._id %>/removeItems">
+    <div id="prv-wrap">
+        <table id="prv-itm">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% user.itemsForSale.forEach(function(item) { %>
+                    <tr>
+                        <td><%= item.name %></td>
+                        <td><%= item.description %></td>
+                        <td>$<%= item.price %></td>
+                        <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit">Remove Selected Items</button>
+</form>
 
 <div id="rev-wrap">
   <table id="usr-rev">
