@@ -58,6 +58,8 @@ async function addItm(req, res) {
             category: req.body.category,
             color: req.body.color,
             price: req.body.price,
+            description: req.body.description,
+            image: req.body.image,
             seller: userId
         });
         
