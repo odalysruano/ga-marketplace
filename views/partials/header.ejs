@@ -21,12 +21,17 @@
         <a href="/???"><span>GA</span>Marketplace</a>
       </h2>
       <ul>
-        <li><a href="/???">???</a></li>
+        <li><a href="/products/">All Products</a></li>
         <li><a href="/???">???</a></li>
         <li><a href="/???">???</a></li>
         <li><a href="/???">???</a></li>
       </ul>
       <a href="/orders">View Cart</a>
-      <a href="/???" class="btn">Log In</a>
+
+      <% if (user) { %>
+      <a href="/???" class="btn">Profile</a>
+      <a href="/logout" class="btn">Log Out</a>
+      <% } else { %>
+      <a href="/auth/google" class="btn">Log In</a>
+      <% } %>
     </nav>
- 
