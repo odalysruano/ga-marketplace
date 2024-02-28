@@ -3,11 +3,11 @@ var router = express.Router();
 const ensureLoggedIn = require("../config/ensureLoggedIn");
 const usersCtrl = require("../controllers/users");
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
-
+router.get('/:userId', usersCtrl.getUsr);
+router.get('/:userId/items', usersCtrl.usrItmPg);
+router.post('/:userId/items/add', usersCtrl.addItm);
+router.post('/:userId/removeItems', usersCtrl.rmvItm);
+router.post('/:userId/updateUsername', usersCtrl.updtUsrNm)
 // GET /users/:username - sellers shop page
 router.get("/:username", usersCtrl.shop);
 

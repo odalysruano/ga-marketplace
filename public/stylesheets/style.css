@@ -176,3 +176,65 @@ footer {
   font-size: 20px;
 }
 
+/* user stuff temporary --> */
+#user-page-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+#user-list {
+  border: solid 1px;
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+#prv-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+#prv-itm {
+  border: solid 1px;
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+#rev-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+#usr-rev{
+  border: solid 1px;
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+#add-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+#add-form {
+  border: solid 1px;
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+/* temporary --> */

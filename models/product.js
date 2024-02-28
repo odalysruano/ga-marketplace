@@ -20,6 +20,10 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
+    description: {
+      type: String,
+      required: false,
+    },
     seller: {
       type: Schema.Types.ObjectId,
       ref: "User",
