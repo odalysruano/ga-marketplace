@@ -1,9 +1,13 @@
-<h1>All Products</h1>
+<%- include('../partials/header') %>
+
+<div class="container">
+
+<h1 class="title">All Products</h1>
 <table id="list">
     <thead>
         <tr>
-            <th>Product</th>
-            <th>Price</th>
+            <th class="title">Product</th>
+            <th class="title">Price</th>
             <th></th>
         </tr>
     </thead>
@@ -17,3 +21,6 @@
         <% }); %>
     </tbody>
 </table>
+
+</div>
+<%- include('../partials/footer') %>
