@@ -29,11 +29,15 @@
               <option value="WHT">White</option>
             </select><br>
          
-            <label for="Price">Price:</label>
+            <label for="price">Price:</label>
             <input type="text" id="price" name="price" required><br>
-            
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description"><br>
+
             <button type="submit">Add Item</button>
          </form>
+         <a href="/users/<%= user._id %>"><button>Go Back</button></a>
     </div>
 </div>
 
