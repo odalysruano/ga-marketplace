@@ -7,6 +7,7 @@ module.exports = {
     usrItmPg,
     addItm,
     rmvItm,
+    updtUsrNm,
     shop,
 };
 
@@ -80,6 +81,28 @@ async function rmvItm(req, res) {
         user.itemsForSale = user.itemsForSale.filter(function(item) {
             return !itemIdsToRemove.includes(item._id.toString());
         });
+
+        await user.save();
+
+        res.redirect(`/users/${userId}`);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+
+async function updtUsrNm(req, res) {
+    try {
+        const userId = req.params.userId;
+        const newUsername = req.body.newUsername;
+
+        const user = await User.findById(userId);
+        
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        user.username = newUsername;
 
         await user.save();
 

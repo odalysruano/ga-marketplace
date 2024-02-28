@@ -11,12 +11,17 @@
       </thead>
       <tbody>
           <tr>
-              <td><%= user.googleId %></td>
+              <td><%= user.username %></td>
               <td><%= user.email %></td>
           </tr>
       </tbody>
   </table>
 </div>
+
+<form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
+    <input type="text" name="newUsername" placeholder="Enter new username" required>
+    <button type="submit">Update Username</button>
+  </form>
 
 
 <h2>Items For Sale</h2>
