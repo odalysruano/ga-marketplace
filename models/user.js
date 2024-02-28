@@ -11,6 +11,11 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     email: String,
     itemsForSale: [productSchema.schema],
     orders: [orderSchema.schema],

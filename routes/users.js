@@ -7,5 +7,7 @@ router.get('/', usersCtrl.index);
 router.get('/:userId', usersCtrl.getUsr);
 router.get('/:userId/items', usersCtrl.usrItmPg);
 router.post('/:userId/items/add', usersCtrl.addItm);
+router.get('/:username', usersCtrl.shop);
 
 module.exports = router;
+

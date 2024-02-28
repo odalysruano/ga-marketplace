@@ -7,6 +7,7 @@ module.exports = {
     getUsr,
     usrItmPg,
     addItm,
+    shop,
 }
 
 async function index(req, res) {
@@ -68,4 +69,11 @@ async function addItm(req, res) {
         console.error(error);
         res.status(500).send('Internal Berver Error');
     }
+}
+
+async function shop(req, res) {
+    const queryResult = await User.find({username: req.params.username});
+    const seller = queryResult[0];
+    const products = seller.itemsForSale;
+    res.render('users/shop', { title: 'Shop My Page', seller, products });
 }
