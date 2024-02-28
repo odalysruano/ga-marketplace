@@ -8,26 +8,43 @@
   <title>Shopping Cart</title>
 </head>
 <body>
-  <h1>Cart</h1>
-  <% if (orders.length === 0) { %>
-      <p>Your cart is empty.</p>
-  <% } else { %>
-      <ul>
-          <% orders.forEach(order => { %>
-              <li>
-                  <h2>Order ID: <%= order._id %></h2>
-                  <p>Product: <%= order.product %></p>
-                  <p>Quantity: <%= order.quantity %></p>
-                  <p>Price: $<%= order.price %></p>
-                  <form action="/orders/<%= order._id %>" method="POST">
-                      <input type="hidden" name="_method" value="DELETE">
-                      <button type="submit">Delete</button>
-                  </form>
-              </li>
-          <% }); %>
-      </ul>
-  <% } %>
-  <form action="/checkout" method="GET">
-      <button type="submit" <% if (isEmpty) { %> disabled <% } %>>Checkout</button>
-  </form>
-  <a href="/">Continue Shopping</a>
+    <!-- Display welcome message for authenticated user -->
+    <h1>Welcome, <%= user.displayName %>!</h1>
+    
+    <!-- Display cart contents -->
+    <h2>Cart</h2>
+    <% if (orders.length === 0) { %>
+        <!-- message when cart is empty -->
+        <p>Your cart is empty.</p>
+    <% } else { %>
+        <!-- Display orders in a list -->
+        <ul>
+            <% orders.forEach(order => { %>
+                <li>
+                    <!-- Display order information -->
+                    <h3>Order ID: <%= order._id %></h3>
+                    <p>Product: <%= order.product %></p>
+                    <p>Price: $<%= order.price %></p>
+                    <!-- link to view product details page -->
+                    <a href="/products/<%= order.product._id %>">View Product Details</a>
+                    
+                    <!-- Display delete button if user owns the order -->
+                    <% if (user && order.userId === user._id) { %>
+                        <form action="/orders/<%= order._id %>" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Delete</button>
+                        </form>
+                    <% } %>
+                </li>
+            <% }); %>
+        </ul>
+        
+        <!-- Display checkout button -->
+        <form action="/checkout" method="GET">
+            <!-- Disable checkout button if cart is empty -->
+            <button <% if (isEmpty) { %> disabled <% } %>>Checkout</button>
+        </form>
+    <% } %>
+    
+    <!-- link to back to homepage -->
+    <a href="/">Continue Shopping</a>
