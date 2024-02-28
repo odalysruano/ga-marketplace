@@ -18,10 +18,11 @@
   <body>
     <nav>
       <h2 class="logo">
-        <a href="/???"><span>GA</span>Marketplace</a>
+        <a href="/"><span>GA</span>Marketplace</a>
       </h2>
+
       <% if (user) { %>
-      <div class="dropdown" style="float:right;">
+      <div class="dropdown" style="float: right">
         <button class="dropbtn">Log Out</button>
         <div class="dropdown-content">
           <a href="#">Profile</a>
@@ -30,6 +31,15 @@
         </div>
       </div>
       <% } else { %>
-      <a href="/auth/google" class="btn">Log In</a>
+      <a href="/auth/google" class="btn" style="float: right">Log In</a>
       <% } %>
+
+      <div class="search-container">
+        <form action="/">
+          <input type="text" placeholder="Search.." name="search" />
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
     </nav>
+  </body>
+</html>

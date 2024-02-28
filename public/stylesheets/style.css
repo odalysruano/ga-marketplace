@@ -11,13 +11,11 @@
 body {
   background-color: rgba(255, 255, 255, 0.9);
 }
+/* <!-- Navbar --> */
 nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding-top: 15px;
   padding-left: 8%;
-  padding-right: 8%;
+  padding-right: 2%;
   padding-bottom: 10px;
   position: fixed;
   top: 0;
@@ -26,7 +24,8 @@ nav {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.logo {
+nav .logo {
+  float: left;
   color: white;
   font-size: 35px;
   letter-spacing: 1px;
@@ -35,25 +34,12 @@ nav {
 span {
   color: #8304b7;
 }
-nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 10px 25px;
-}
+
 nav a {
   color: white;
   text-decoration: none;
 }
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: capitalize;
-}
-nav ul li a:hover {
-  color: #8304b7;
-  transition: 0.4s;
-}
+
 .btn {
   background-color: #8304b7;
   color: white;
@@ -69,9 +55,9 @@ nav ul li a:hover {
 }
 
 .dropbtn {
-  background-color: #8304b7;
+  background-color: transparent;
   color: white;
-  padding: 16px;
+  padding: 12px;
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -109,6 +95,33 @@ nav ul li a:hover {
   background-color: #8304b7;
 }
 
+nav .search-container {
+  float: right;
+}
+
+nav input[type="text"] {
+  padding: 6px;
+  margin-top: 3px;
+  font-size: 19px;
+  border: none;
+  width: 360px;
+}
+
+nav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 3px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 19px;
+  border: none;
+  cursor: pointer;
+}
+
+nav .search-container button:hover {
+  background: #ccc;
+}
+/* <!-- Footer --> */
 footer {
   position: absolute;
   right: 0;
