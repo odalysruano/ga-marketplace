@@ -1,0 +1,65 @@
+<%- include('../partials/header', { title: 'User-Page' }) %>
+
+<div id="user-page-wrap">
+  <table id="user-list">
+      <thead>
+          <tr>
+              <th>UserName</th>
+              <th>Email</th>
+              <th><a href="/users/<%= user._id %>/items">Edit Items</a></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><%= user.googleId %></td>
+              <td><%= user.email %></td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+<h2>Items For Sale</h2>
+
+<div id="prv-wrap">
+  <table id="prv-itm">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% user.itemsForSale.slice(0, 5).forEach(function(item) { %>
+            <tr>
+                <td><%= item.name %></td>
+                <td><%= item.description %></td>
+                <td>$<%= item.price %></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+</div>
+
+<div id="rev-wrap">
+  <table id="usr-rev">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Rating</th>
+            <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% user.reviews.forEach(function(review) { %>
+            <tr>
+                <td><%= review.product.name %></td>
+                <td><%= review.rating %></td>
+                <td><%= review.comment %></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+</div>
+<%- include('../partials/footer') %>
