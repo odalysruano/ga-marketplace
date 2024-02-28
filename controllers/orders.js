@@ -8,24 +8,29 @@ module.exports = {
 
 async function index(req, res) {
     try {
-        const orders = await Order.find({ googleID: req.user.googleId }).populate('products');
+        const orders = await Order.find({ username: req.params.username }).populate('products');
+        // Calc total price of cart
         let total = 0;
-        orders.forEach(order => {
-            order.items.forEach(item => {
-                total += item.price;
+        if (orders.length > 0) {
+            orders.forEach(order => {
+                order.items.forEach(item => {
+                    total += item.price;
+                });    
             });
-        });
+        }
+        // Checks if cart is empty
         const isEmpty = orders.length === 0;
-        res.render('orders/index', { orders, isEmpty });
+        res.render('orders/index', { orders, total, isEmpty });
     } catch (error) {
+        console.log(error);
         res.status(500).send('Internal Server Error');
     }
 }
 
 async function create(req, res) {
     try {
-        // Get user's Google ID from the req
-        const googleId = req.user.googleId;
+        // Get user's ID from the req
+        const username = req.params.username;
 
         // Find product in the db using product ID from the req parameters
         const product = await Product.findById(req.params.productId);
@@ -57,7 +62,7 @@ async function create(req, res) {
 
         // If no existing order, create a new order and add the item
         const newOrder = new Order({
-            buyer: googleId,
+            buyer: username,
             seller: product.seller,
             items: [{
                 product: product._id,
