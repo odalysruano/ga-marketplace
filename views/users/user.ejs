@@ -7,7 +7,11 @@
               <th>UserName</th>
               <th>Email</th>
               <th><a href="/users/<%= user._id %>/items"><button>Add Items</button></a></th>
-          </tr>
+              <th><form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
+                <input type="text" name="newUsername" placeholder="Enter new username" required>
+                <button type="submit">Update Username</button>
+              </form></th>
+            </tr>
       </thead>
       <tbody>
           <tr>
@@ -17,11 +21,6 @@
       </tbody>
   </table>
 </div>
-
-<form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
-    <input type="text" name="newUsername" placeholder="Enter new username" required>
-    <button type="submit">Update Username</button>
-  </form>
 
 
 <h2>Items For Sale</h2>
