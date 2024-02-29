@@ -28,25 +28,24 @@
         <li><a href="/products/filters?category=SHO">Shoes</a></li>
         <li><a href="/products/filters?category=ACC">Acessories</a></li>
 
-        <% if (user) { %>
-        <div class="dropdown" style="float: right">
-          <button class="dropbtn">Account</button>
-          <div class="dropdown-content">
-            <a href="#">Profile</a>
-            <a href="/orders">View Cart</a>
-            <a href="/logout">Log Out</a>
-          </div>
+      <% if (user) { %>
+      <div class="dropdown" style="float: right">
+        <button class="dropbtn">Account</button>
+        <div class="dropdown-content">
+          <a href="/users/<%= user._id %>">Profile</a>
+          <a href="/orders">View Cart</a>
+          <a href="/logout">Log Out</a>
         </div>
-        <% } else { %>
-        <a href="/auth/google" class="btn" style="float: right">Log In</a>
-        <% } %>
-        <div class="search-container">
-          <form autocomplete="off" action="/products/filters">
-            <input type="text" placeholder="Search.." name="search" />
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
-      </ul>
+      </div>
+      <% } else { %>
+      <a href="/auth/google" class="btn" style="float: right">Log In</a>
+      <% } %>
+      <div class="search-container">
+        <form autocomplete="off" action="/products/filters">
+          <input type="text" placeholder="Search.." name="search" />
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
     </nav>
   </body>
 </html>

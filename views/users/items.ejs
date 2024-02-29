@@ -1,6 +1,9 @@
 <%- include('../partials/header', { title: 'User-Items' }) %>
 
 <div class="container">
+
+  <div class="bckgrnd-crd">
+
   <h2>Add Item For Sale</h2>
   <div id="add-wrap">
       <div id="add-form">
@@ -38,12 +41,18 @@
 
             <label for="description">Description:</label>
             <input type="text" id="description" name="description"><br>
-
-              <button type="submit">Add Item</button>
           </form>
-          <a href="/users/<%= user._id %>"><button>Go Back</button></a>
+
+          <div class="add-form-btn-wrp">
+            <button type="submit" class="add-form-btn">Add Item</button>
+            <a href="/users/<%= user._id %>"><button class="add-form-btn">Go Back</button></a>
+          </div>
+
       </div>
   </div>
+
+  </div>
+
 </div>
 
 
