@@ -44,8 +44,8 @@
                         <td><%= item.name %></td>
                         <td><%= item.description %></td>
                         <td>$<%= item.price %></td>
-                        <td><img src="<%= item.image %>"></td>
-                        <td><input type="checkbox" name="itemIds" value="<%= item._id %>"> required</td>
+                        <td><img src="<%= item.image %>" id="prdct-img"></td>
+                        <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
                     </tr>
                 <% }); %>
             </tbody>

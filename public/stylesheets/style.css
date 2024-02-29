@@ -237,4 +237,9 @@ footer {
   text-align: center;
 }
 
+#prdct-img {
+  height: 60px;
+  width: auto;
+}
+
 /* temporary --> */
