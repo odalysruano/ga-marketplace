@@ -10,6 +10,10 @@
 }
 body {
   background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  background-image: url("https://wallup.net/wp-content/uploads/2016/05/25/20766-texture-clothing.jpg");
+  background-size: cover;
+  background-position: center;
 }
 /* <!-- Navbar --> */
 nav {
@@ -125,7 +129,7 @@ nav .search-container button:hover {
 footer {
   position: absolute;
   right: 0;
-  /* bottom: 0; */
+  bottom: 0;
   left: 0;
   background: #111;
   color: #fff;
@@ -200,6 +204,7 @@ footer {
 }
 
 /* Below is style for Homepage */
+
 .first {
   height: 100vh;
   width: 100%;
@@ -207,6 +212,7 @@ footer {
   background-size: cover;
   background-position: center;
 }
+
 .content {
   position: absolute;
   top: 50%;
@@ -237,4 +243,59 @@ footer {
   padding-top: 5%;
   padding-left: 8%;
   z-index: 0;
+}
+
+.container .card {
+  /*margin-top:300px;*/
+  position: relative;
+  width: 22%;
+  height: 350px;
+  background-color: rgba(95, 95, 95, 0.9);
+  margin: 30px 10px;
+  padding: 20px 15px;
+  float: left;
+  display: table-cell;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
+
+.container .card .card-image {
+  position: relative;
+  top: -15%;
+  left: 8px;
+  z-index: 1;
+  width: 96%;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+.container .card .card-image img {
+  max-width: 100%;
+  border-radius: 15px;
+  height: 350px;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+.container .card .card-content {
+  position: relative;
+  top: -240px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.container .card:hover .card-content {
+  margin-top: 30px;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.container .card:hover .card-image img {
+  height: 0px;
 }

@@ -1,24 +1,18 @@
-<%- include('./partials/header') %>
+<%- include('../partials/header') %>
 
-<h1>All Products</h1>
-<table id="list">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% products.forEach(function(p) { %>
-            <tr>
-                <td><%= p.name %></td>
-                <td><%= p.price %></td>
-                <td><a href="/products/<%= p._id %>">DETAILS</a></td>
-            </tr>
-        <% }); %>
-    </tbody>
-</table>
-
-
-<%- include('./partials/footer') %>
+<div class="container">
+    <% products.forEach(function(p) { %> 
+        <a href="/products/<%= p._id %>">
+            <div class="card">
+                <div class="card-image">
+                    <img src="<%= p.image %>" alt="<%= p.name %>" />
+                </div>
+                <div class="card-content">
+                    <h3><%= p.name %></h3>
+                    <p>$<%= p.price %></p>
+                    <p><%= p.description %></p>
+                </div>
+            </div>
+    <% }); %>
+</div>
+<%- include('../partials/footer') %>
