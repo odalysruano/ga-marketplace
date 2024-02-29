@@ -34,6 +34,7 @@
                     <th>Description</th>
                     <th>Price</th>
                     <th>Image</th>
+                    <th>Link</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -43,7 +44,12 @@
                         <td><%= item.name %></td>
                         <td><%= item.description %></td>
                         <td>$<%= item.price %></td>
-                        <td><img src="<%= item.image %>" id="prdct-img"></td>
+                        <td>
+                            <img src="<%= item.image %>"  id="prdct-img">
+                            <!-- <a href="/products/<%= item._id %>">
+                                <input type="image" src="<%= item.image %>" name="image" id="prdct-img" /></a>      -->
+                        </td>
+                        <td><a href="/products/<%= item._id %>">Details</a></td>
                         <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
                     </tr>
                 <% }); %>
