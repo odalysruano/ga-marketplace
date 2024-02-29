@@ -224,7 +224,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh;
+    padding: 20px;
   }
 
   #user-list {
@@ -233,11 +233,17 @@
     display: inline-block;
     width: 100%;
     text-align: center;
+    text-indent: 20px;
   }
 
+  #avt-img {
+    border-radius: 50%;
+  }
 
-/* temporary --> */
-  
+  .usr-head {
+    font-size: 16px;
+  }
+
   #prdct-img {
   height: 60px;
   width: auto;
@@ -247,7 +253,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh;
+    padding: 20px;
   }
 
   #prv-itm {
@@ -288,3 +294,20 @@
     text-align: center;
   }
 }
+
+#edt-btn-wrap {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#edt-btn{
+  padding: 10px;
+  border-radius: 5px;
+
+}
+
+.itm-head {
+  font-size: 20px;
+}
+/* <-- user stuff temporary */

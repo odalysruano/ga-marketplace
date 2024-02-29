@@ -3,12 +3,14 @@
 <div class="container">
 
 <div id="user-page-wrap">
+
+<img src="<%= user.avatar %>" id="avt-img" >
+
   <table id="user-list">
-      <thead>
+      <thead class="usr-head">
           <tr>
               <th>UserName</th>
               <th>Email</th>
-              <th><a href="/users/<%= user._id %>/items"><button>Add Items</button></a></th>
               <th><form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
                 <input type="text" name="newUsername" placeholder="Enter new username" required>
                 <button type="submit">Update Username</button>
@@ -30,7 +32,7 @@
 <form id="rmv-itm-form" method="POST" action="/users/<%= user._id %>/removeItems">
     <div id="prv-wrap">
         <table id="prv-itm">
-            <thead>
+            <thead class="itm-head">
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
@@ -58,9 +60,11 @@
                 
             </tbody>
         </table>
-        <button type="submit">Remove Selected Items</button>
     </div>
-
+    <div id="edt-btn-wrap">
+        <button type="submit" id="edt-btn">Remove Selected Items</button>
+        <a href="/users/<%= user._id %>/items"><button id="edt-btn">Add Items</button></a>
+    </div>
     
 </form>
 <!-- 
