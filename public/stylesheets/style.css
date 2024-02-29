@@ -501,3 +501,10 @@ button.disabled {
     height: 0px;
   }
 
+  #order-img {
+    height: 200px;
+  }
+
+.cart-items {
+  text-align: center;
+}
