@@ -1,12 +1,18 @@
-<h1>Welcome to My Shop</h1>
+<%- include('../partials/header') %>
 
-<section id="shop-page">
-    <div>Name: </div>
-    <div><%= seller.name %></div>
-    <div>Shop Page: </div>
-    <div><%= seller.username %></div>
-    <div>Items for Sale: </div>
-    <div><%= seller.itemsForSale %></div>
-</section>
+<div class="container">
+    <h1>Welcome to My Shop</h1>
 
-<br><br><h2>Reviews</h2>
+    <section id="shop-page">
+        <div>Name: </div>
+        <div><%= seller.name %></div>
+        <div>Shop Page: </div>
+        <div><%= seller.username %></div>
+        <div>Items for Sale: </div>
+        <div><%= seller.itemsForSale %></div>
+    </section>
+
+    <br><br><h2>Reviews</h2>
+</div>
+
+<%- include('../partials/footer') %>
