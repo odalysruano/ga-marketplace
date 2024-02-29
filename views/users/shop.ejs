@@ -1,18 +1,43 @@
 <%- include('../partials/header') %>
 
 <div class="container">
+    <div class="bckgrnd-crd">
     <h1>Welcome to My Shop</h1>
+    
+    <br /><br />
+    
+    <h1><%= seller.username %></h1>
+    
+    <br /><br />
 
-    <section id="shop-page">
-        <div>Name: </div>
-        <div><%= seller.name %></div>
-        <div>Shop Page: </div>
-        <div><%= seller.username %></div>
-        <div>Items for Sale: </div>
-        <div><%= seller.itemsForSale %></div>
-    </section>
+    <h2>Items for Sale</h2>
+    
+    <br /><br />
 
-    <br><br><h2>Reviews</h2>
-</div>
+    <% if (seller.itemsForSale.length) { %>
+        <table id="shop-page">
+            <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <% seller.itemsForSale.forEach(function(s) { %>
+                <tr>
+                    <td><a href="/products/<%= s._id %>"><%= s.name %></a></td>
+                    <td><img src="<%= s.image %>" class="image"></td>
+                </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <h5>No Items Yet</h5>  
+    <% } %>
+
+    <br><br>
+
+    <h2>Reviews</h2>
+    </div>
 
 <%- include('../partials/footer') %>

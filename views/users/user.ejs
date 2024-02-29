@@ -2,13 +2,17 @@
 
 <div class="container">
 
+<div class="bckgrnd-crd">
+    
 <div id="user-page-wrap">
+
+<img src="<%= user.avatar %>" id="avt-img" >
+
   <table id="user-list">
-      <thead>
+      <thead class="usr-head">
           <tr>
               <th>UserName</th>
               <th>Email</th>
-              <th><a href="/users/<%= user._id %>/items"><button>Add Items</button></a></th>
               <th><form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
                 <input type="text" name="newUsername" placeholder="Enter new username" required>
                 <button type="submit">Update Username</button>
@@ -30,7 +34,7 @@
 <form id="rmv-itm-form" method="POST" action="/users/<%= user._id %>/removeItems">
     <div id="prv-wrap">
         <table id="prv-itm">
-            <thead>
+            <thead class="itm-head">
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
@@ -55,12 +59,15 @@
                         <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
                     </tr>
                 <% }); %>
+                
             </tbody>
         </table>
     </div>
-
-    <button type="submit">Remove Selected Items</button>
 </form>
+<div id="edt-btn-wrap">
+    <a href="/users/<%= user._id %>/items"><button id="edt-btn">Add Items</button></a>
+    <button type="submit" id="edt-btn">Remove Selected Items</button>
+</div>
 <!-- 
 <div id="rev-wrap">
   <table id="usr-rev">
@@ -82,6 +89,7 @@
     </tbody>
 </table>
 </div> -->
+</div>
 
 </div>
 

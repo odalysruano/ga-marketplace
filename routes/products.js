@@ -7,6 +7,8 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // GET /products
 router.get('/', productsCtrl.index);
+// Get /products/filters
+router.get('/filters', productsCtrl.filterProducts);
 // GET /products/:id
 router.get('/:id', productsCtrl.show);
 

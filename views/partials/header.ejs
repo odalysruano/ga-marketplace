@@ -15,23 +15,37 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  
-  <nav>
-    <h2 class="logo">
-      <a href="/???"><span>GA</span>Marketplace</a>
-    </h2>
-    <ul>
-      <li><a href="/products/">All Products</a></li>
-      <li><a href="/???">???</a></li>
-      <li><a href="/???">???</a></li>
-      <li><a href="/???">???</a></li>
-    </ul>
-      <a href="/orders">View Cart</a>
+  <body>
+    <nav>
+      <h2 class="logo">
+        <a href="/"><span>GA</span>Marketplace</a>
+      </h2>
+      <ul>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/products/filters?category=TOP">Tops</a></li>
+        <li><a href="/products/filters?category=BOT">Bottoms</a></li>
+        <li><a href="/products/filters?category=JAC">Jackets</a></li>
+        <li><a href="/products/filters?category=SHO">Shoes</a></li>
+        <li><a href="/products/filters?category=ACC">Acessories</a></li>
 
-    <% if (user) { %>
-    <a href="/users/<%= user._id %>" class="btn">Profile</a>
-    <a href="/logout" class="btn">Log Out</a>
-    <% } else { %>
-    <a href="/auth/google" class="btn">Log In</a>
-    <% } %>
-  </nav>
+      <% if (user) { %>
+      <div class="dropdown" style="float: right">
+        <button class="dropbtn">Account</button>
+        <div class="dropdown-content">
+          <a href="/users/<%= user._id %>">Profile</a>
+          <a href="/orders">View Cart</a>
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+      <% } else { %>
+      <a href="/auth/google" class="btn" style="float: right">Log In</a>
+      <% } %>
+      <div class="search-container">
+        <form autocomplete="off" action="/products/filters">
+          <input type="text" placeholder="Search.." name="search" />
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </nav>
+  </body>
+</html>

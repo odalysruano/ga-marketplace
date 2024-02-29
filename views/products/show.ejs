@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
 <div class="container">
+    <div class="bckgrnd-crd">
     <h1 class="title">Product Details</h1>
         <section id="show-detail-page">
           <div>Name:</div>
@@ -15,15 +16,21 @@
 
         <br /><br />
 
-        <img class="image" src="https://i.etsystatic.com/39257071/r/il/b5fdc0/5432097254/il_794xN.5432097254_clu2.jpg">
+        <img src="<%= product.image %>" class="image" >
         <br /><br />
         <form action="/orders/<%= product._id %>" method="POST">
           <button type="submit">Add to Cart</button>
         </form>
+        
+        <div class="prdct-desc"><%= product.description %></div>
+        <br><br>
+
         <br /><br />
 
     <h2 class="title">Sold By: <%= seller.username %></h2>
+    <img src="<%= seller.avatar %>" id="avt-img" >
     <a class="visit-shop" href="/shop/<%= seller.username %>">Visit <%= seller.username %>'s Shop</a>
+    </div>
 </div>
 
 <%- include('../partials/footer') %>
