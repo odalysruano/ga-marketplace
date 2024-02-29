@@ -19,9 +19,14 @@ async function index(req, res) {
 }
 
 async function filterProducts(req, res) {
-  const regex = new RegExp(req.query.search, "i"); // 'i' for case-insensitive search
-  const products = await Product.find({ name: regex });
-  console.log(products);
-
+  const userInput = new RegExp(req.query.search, "i"); // 'i' for case-insensitive search
+  const category = new RegExp(req.query.category, "i"); // 'i' for case-insensitive search
+  let products = await Product.find({ name: userInput });
+  console.log(req.query.search);
+  if (req.query.category){
+    products = await Product.find({ category: category });
+    console.log(category);
+    console.log(products);
+  }
   res.render("products/index", { title: "Filter Products", products });
 }
