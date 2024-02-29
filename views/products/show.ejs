@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
 
 <div class="container">
+    <div class="bckgrnd-crd">
     <h1 class="title">Product Details</h1>
         <section id="show-detail-page">
             <div>Name: </div>
@@ -29,6 +30,7 @@
     <h2 class="title">Sold By: <%= seller.username %></h2>
     <img src="<%= seller.avatar %>" id="avt-img" >
     <a class="visit-shop" href="/shop/<%= seller.username %>">Visit <%= seller.username %>'s Shop</a>
+    </div>
 </div>
 
 <%- include('../partials/footer') %>

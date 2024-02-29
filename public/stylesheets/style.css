@@ -284,6 +284,16 @@
     z-index: 0;
   }
 
+  .bckgrnd-crd {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 30px;
+    
+  }
+
   #show-detail-page {
     display: grid;
     grid-template-columns: 70px 100px;
@@ -317,7 +327,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh;
+    padding: 20px;
   }
 
   #user-list {
@@ -328,10 +338,10 @@
     text-align: center;
   }
 
-  /* temporary --> */
-
   #avt-img {
     border-radius: 50%;
+    padding: 10px;
+    background-color: darkgrey;
   }
 
   .usr-head {
@@ -347,7 +357,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh;
+    padding: 20px;
   }
 
   #prv-itm {
@@ -377,7 +387,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh;
   }
 
   #add-form {
@@ -385,8 +394,42 @@
     padding: 20px;
     display: inline-block;
     width: 100%;
-    text-align: center;
+    text-align: right;
   }
+
+  .add-form-btn-wrp {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    padding: 20px;
+  }
+  
+  .add-form-btn {
+  border-radius: 5px;
+  width: 80px;
+  }
+
+}
+
+#edt-btn-wrap {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 755px;
+}
+
+#edt-btn {
+  padding: 10px;
+  border-radius: 5px;
+  width: 250px;
+  
+}
+
+.itm-head {
+  font-size: 20px;
+}
+/* <-- user stuff temporary */
 
   /* <!-- Products cards in searching --> */
   .container2 {
@@ -452,20 +495,4 @@
   .container2 .card:hover .card-image img {
     height: 0px;
   }
-}
 
-#edt-btn-wrap {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-#edt-btn {
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.itm-head {
-  font-size: 20px;
-}
-/* <-- user stuff temporary */
