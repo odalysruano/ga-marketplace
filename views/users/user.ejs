@@ -1,5 +1,7 @@
 <%- include('../partials/header', { title: 'User-Page' }) %>
 
+<div class="container">
+
 <div id="user-page-wrap">
   <table id="user-list">
       <thead>
@@ -7,7 +9,11 @@
               <th>UserName</th>
               <th>Email</th>
               <th><a href="/users/<%= user._id %>/items"><button>Add Items</button></a></th>
-          </tr>
+              <th><form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
+                <input type="text" name="newUsername" placeholder="Enter new username" required>
+                <button type="submit">Update Username</button>
+              </form></th>
+            </tr>
       </thead>
       <tbody>
           <tr>
@@ -17,11 +23,6 @@
       </tbody>
   </table>
 </div>
-
-<form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
-    <input type="text" name="newUsername" placeholder="Enter new username" required>
-    <button type="submit">Update Username</button>
-  </form>
 
 
 <h2>Items For Sale</h2>
@@ -34,6 +35,8 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
+                    <th>Image</th>
+                    <th>Link</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -43,6 +46,12 @@
                         <td><%= item.name %></td>
                         <td><%= item.description %></td>
                         <td>$<%= item.price %></td>
+                        <td>
+                            <img src="<%= item.image %>"  id="prdct-img">
+                            <!-- <a href="/products/<%= item._id %>">
+                                <input type="image" src="<%= item.image %>" name="image" id="prdct-img" /></a>      -->
+                        </td>
+                        <td><a href="/products/<%= item._id %>">Details</a></td>
                         <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
                     </tr>
                 <% }); %>
@@ -52,7 +61,7 @@
 
     <button type="submit">Remove Selected Items</button>
 </form>
-
+<!-- 
 <div id="rev-wrap">
   <table id="usr-rev">
     <thead>
@@ -72,5 +81,8 @@
         <% }); %>
     </tbody>
 </table>
+</div> -->
+
 </div>
+
 <%- include('../partials/footer') %>

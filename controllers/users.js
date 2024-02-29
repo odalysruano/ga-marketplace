@@ -8,7 +8,6 @@ module.exports = {
     addItm,
     rmvItm,
     updtUsrNm,
-    shop,
 };
 
 async function index(req, res) {
@@ -58,6 +57,8 @@ async function addItm(req, res) {
             category: req.body.category,
             color: req.body.color,
             price: req.body.price,
+            description: req.body.description,
+            image: req.body.image,
             seller: userId
         });
         
@@ -82,6 +83,12 @@ async function rmvItm(req, res) {
             return !itemIdsToRemove.includes(item._id.toString());
         });
 
+        if (itemIdsToRemove.length === 1) {
+            await Product.deleteOne({ _id: itemIdsToRemove[0] });
+        } else {
+            await Product.deleteMany({ _id: { $in: itemIdsToRemove } });
+        }
+        
         await user.save();
 
         res.redirect(`/users/${userId}`);
@@ -111,11 +118,4 @@ async function updtUsrNm(req, res) {
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
-}
-
-async function shop(req, res) {
-    const queryResult = await User.find({username: req.params.username});
-    const seller = queryResult[0];
-    const products = seller.itemsForSale;
-    res.render('users/shop', { title: 'Shop My Page', seller, products });
 }

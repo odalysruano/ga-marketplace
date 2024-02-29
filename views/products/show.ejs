@@ -1,16 +1,33 @@
-<section id="show-page">
-  <div>Name:</div>
-  <div><%= product.name %></div>
-  <div>Category:</div>
-  <div><%= product.category %></div>
-  <div>Color:</div>
-  <div><%= product.color %></div>
-  <div>Price:</div>
-  <div><%= product.price %></div>
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1 class="title">Product Details</h1>
+        <section id="show-detail-page">
+          <div>Name:</div>
+          <div><%= product.name %></div>
+          <div>Category:</div>
+          <div><%= product.category %></div>
+          <div>Color:</div>
+          <div><%= product.color %></div>
+          <div>Price: $</div>
+          <div><%= product.price %></div>
   <form action="/orders/<%= product._id %>" method="POST">
-    <!-- Add any input fields or submit button here -->
     <button type="submit">Add to Cart</button>
-</form>
-</section>
+  </form>
+        </section>
 
 <a href="/orders">HERE</a>
+
+        <br /><br />
+
+        <img class="image" src="https://i.etsystatic.com/39257071/r/il/b5fdc0/5432097254/il_794xN.5432097254_clu2.jpg">
+        <br /><br />
+        <button disabled>Add to Cart</button>
+
+        <br /><br />
+
+    <h2 class="title">Sold By: <%= seller.username %></h2>
+    <a class="visit-shop" href="/shop/<%= seller.username %>">Visit <%= seller.username %>'s Shop</a>
+</div>
+
+<%- include('../partials/footer') %>
