@@ -266,7 +266,10 @@
     letter-spacing: 2px;
     font-size: 20px;
   }
-
+button.disabled {
+  opacity: 0.5; /* Gray out button */
+  cursor: not-allowed; /* Change cursor to indicate button is not clickable */
+}
   .container {
     display: flex;
     flex-direction: column;

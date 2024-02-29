@@ -4,26 +4,26 @@
     <div class="bckgrnd-crd">
     <h1 class="title">Product Details</h1>
         <section id="show-detail-page">
-            <div>Name: </div>
-            <div><%= product.name %></div>
-            <div>Category: </div>
-            <div><%= product.category %></div>
-            <div>Color: </div>
-            <div><%= product.color %></div>
-            <div>Price: $ </div>
-            <div><%= product.price %></div>
+          <div>Name:</div>
+          <div><%= product.name %></div>
+          <div>Category:</div>
+          <div><%= product.category %></div>
+          <div>Color:</div>
+          <div><%= product.color %></div>
+          <div>Price: $</div>
+          <div><%= product.price %></div>
         </section>
 
         <br /><br />
 
         <img src="<%= product.image %>" class="image" >
         <br /><br />
+        <form action="/orders/<%= product._id %>" method="POST">
+          <button type="submit">Add to Cart</button>
+        </form>
         
         <div class="prdct-desc"><%= product.description %></div>
         <br><br>
-
-        <button disabled>Add to Cart</button>
-        <br /><br />
 
         <br /><br />
 
