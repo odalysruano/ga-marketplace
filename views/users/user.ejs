@@ -2,6 +2,8 @@
 
 <div class="container">
 
+<div class="bckgrnd-crd">
+    
 <div id="user-page-wrap">
 
 <img src="<%= user.avatar %>" id="avt-img" >
@@ -61,12 +63,11 @@
             </tbody>
         </table>
     </div>
-    <div id="edt-btn-wrap">
-        <button type="submit" id="edt-btn">Remove Selected Items</button>
-        <a href="/users/<%= user._id %>/items"><button id="edt-btn">Add Items</button></a>
-    </div>
-    
 </form>
+<div id="edt-btn-wrap">
+    <a href="/users/<%= user._id %>/items"><button id="edt-btn">Add Items</button></a>
+    <button type="submit" id="edt-btn">Remove Selected Items</button>
+</div>
 <!-- 
 <div id="rev-wrap">
   <table id="usr-rev">
@@ -88,6 +89,7 @@
     </tbody>
 </table>
 </div> -->
+</div>
 
 </div>
 
