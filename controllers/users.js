@@ -57,6 +57,8 @@ async function addItm(req, res) {
             category: req.body.category,
             color: req.body.color,
             price: req.body.price,
+            description: req.body.description,
+            image: req.body.image,
             seller: userId
         });
         
@@ -81,6 +83,12 @@ async function rmvItm(req, res) {
             return !itemIdsToRemove.includes(item._id.toString());
         });
 
+        if (itemIdsToRemove.length === 1) {
+            await Product.deleteOne({ _id: itemIdsToRemove[0] });
+        } else {
+            await Product.deleteMany({ _id: { $in: itemIdsToRemove } });
+        }
+        
         await user.save();
 
         res.redirect(`/users/${userId}`);

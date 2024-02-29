@@ -235,6 +235,14 @@
     text-align: center;
   }
 
+
+/* temporary --> */
+  
+  #prdct-img {
+  height: 60px;
+  width: auto;
+}
+
   #prv-wrap {
     display: flex;
     justify-content: center;

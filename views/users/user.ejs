@@ -2,79 +2,86 @@
 
 <div class="container">
 
-    <div id="user-page-wrap">
-    <table id="user-list">
-        <thead>
-            <tr>
-                <th>UserName</th>
-                <th>Email</th>
-                <th><a href="/users/<%= user._id %>/items"><button>Add Items</button></a></th>
+<div id="user-page-wrap">
+  <table id="user-list">
+      <thead>
+          <tr>
+              <th>UserName</th>
+              <th>Email</th>
+              <th><a href="/users/<%= user._id %>/items"><button>Add Items</button></a></th>
+              <th><form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
+                <input type="text" name="newUsername" placeholder="Enter new username" required>
+                <button type="submit">Update Username</button>
+              </form></th>
             </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><%= user.username %></td>
-                <td><%= user.email %></td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-
-    <form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
-        <input type="text" name="newUsername" placeholder="Enter new username" required>
-        <button type="submit">Update Username</button>
-    </form>
+      </thead>
+      <tbody>
+          <tr>
+              <td><%= user.username %></td>
+              <td><%= user.email %></td>
+          </tr>
+      </tbody>
+  </table>
+</div>
 
 
-    <h2>Items For Sale</h2>
+<h2>Items For Sale</h2>
 
-    <form id="rmv-itm-form" method="POST" action="/users/<%= user._id %>/removeItems">
-        <div id="prv-wrap">
-            <table id="prv-itm">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% user.itemsForSale.forEach(function(item) { %>
-                        <tr>
-                            <td><%= item.name %></td>
-                            <td><%= item.description %></td>
-                            <td>$<%= item.price %></td>
-                            <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-        </div>
-
-        <button type="submit">Remove Selected Items</button>
-    </form>
-
-    <div id="rev-wrap">
-    <table id="usr-rev">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Rating</th>
-                <th>Comment</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% user.reviews.forEach(function(review) { %>
+<form id="rmv-itm-form" method="POST" action="/users/<%= user._id %>/removeItems">
+    <div id="prv-wrap">
+        <table id="prv-itm">
+            <thead>
                 <tr>
-                    <td><%= review.product.name %></td>
-                    <td><%= review.rating %></td>
-                    <td><%= review.comment %></td>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Link</th>
+                    <th>Delete</th>
                 </tr>
-            <% }); %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% user.itemsForSale.forEach(function(item) { %>
+                    <tr>
+                        <td><%= item.name %></td>
+                        <td><%= item.description %></td>
+                        <td>$<%= item.price %></td>
+                        <td>
+                            <img src="<%= item.image %>"  id="prdct-img">
+                            <!-- <a href="/products/<%= item._id %>">
+                                <input type="image" src="<%= item.image %>" name="image" id="prdct-img" /></a>      -->
+                        </td>
+                        <td><a href="/products/<%= item._id %>">Details</a></td>
+                        <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
     </div>
+
+    <button type="submit">Remove Selected Items</button>
+</form>
+<!-- 
+<div id="rev-wrap">
+  <table id="usr-rev">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Rating</th>
+            <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% user.reviews.forEach(function(review) { %>
+            <tr>
+                <td><%= review.product.name %></td>
+                <td><%= review.rating %></td>
+                <td><%= review.comment %></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+</div> -->
 
 </div>
 
