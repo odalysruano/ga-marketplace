@@ -8,7 +8,6 @@ module.exports = {
     addItm,
     rmvItm,
     updtUsrNm,
-    shop,
 };
 
 async function index(req, res) {
@@ -119,11 +118,4 @@ async function updtUsrNm(req, res) {
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
-}
-
-async function shop(req, res) {
-    const queryResult = await User.find({username: req.params.username});
-    const seller = queryResult[0];
-    const products = seller.itemsForSale;
-    res.render('users/shop', { title: 'Shop My Page', seller, products });
 }
