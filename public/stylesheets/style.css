@@ -212,11 +212,18 @@
   .image {
     object-fit: contain;
     max-height: 200px;
+    max-width: 200px;
   }
 
   .visit-shop {
     width: 200px;
     text-align: center;
+  }
+
+  #shop-page {
+    text-align: left;
+    font-size: 20px;
+    border-spacing: 30px 0;
   }
 
   /* user stuff temporary --> */
