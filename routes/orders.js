@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ordersCtrl = require('../controllers/orders');
+const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 // GET/orders - view users order(cart)
 router.get('/', ordersCtrl.index);
@@ -9,7 +10,9 @@ router.get('/', ordersCtrl.index);
 router.post('/:productId', ordersCtrl.create);
 
 // Delete specified order from the cart (Delete item from cart)
-router.delete('/orders/:id', ordersCtrl.delete);
+router.post('/delete/:itemId', ordersCtrl.deleteItem);
+
+
 
 module.exports = router;
  

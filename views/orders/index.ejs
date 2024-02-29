@@ -1,50 +1,43 @@
-<!-- views/cart.ejs -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shopping Cart</title>
-</head>
+<%- include('../partials/header') %>
 <body>
+<div class="container">
     <!-- Display welcome message for authenticated user -->
     <!-- <h1>Welcome,  displayName  </h1> -->
     
     <!-- Display cart contents -->
     <h2>Cart</h2>
-    <% if (orders.length === 0) { %>
-        <!-- message when cart is empty -->
+    <% if (isEmpty) { %>
         <p>Your cart is empty.</p>
     <% } else { %>
         <!-- Display orders in a list -->
-        <ul>
+        <ul class="cart-items">
             <% orders.forEach(order => { %>
                 <li>
                     <!-- Display order information -->
                     <h3>Order ID: <%= order._id %></h3>
-                    <p>Product: <%= order.product %></p>
-                    <p>Price: $<%= order.price %></p>
-                    <!-- link to view product details page -->
-                    
-                    <!-- Display delete button if user owns the order -->
-                    <% if (user && order.userId === user._id) { %>
-                        <form action="/orders/<%= order._id %>" method="POST">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit">Delete</button>
-                        </form>
-                    <% } %>
+                    <ul>
+                        <% order.items.forEach(item => { %>
+                            <li>
+                                <p>Product: <%= item.name %></p>
+                                <p>Price: $<%= item.price %></p>
+                                <form action="/orders/delete/<%= item._id %>" method="POST">
+                                    <button type="submit">Remove Item</button>
+                                </form>
+                            </li>
+                        <% }); %>
+                    </ul>
                 </li>
             <% }); %>
         </ul>
-        
-        <!-- Display checkout button -->
-
+        <h3>Total: $<%= total.toFixed(2) %></h3>
     <% } %>
+
+    <% console.log("Is cart empty?", isEmpty); %> <!--remove after -->
     <form action="/checkout" method="GET">
         <!-- Disable checkout button if cart is empty -->
         <button <% if (isEmpty) { %> disabled <% } %>>Checkout</button>
     </form>
-    
     <!-- link to back to homepage -->
-    <a href="/">Continue Shopping</a>
+    <a href="/products">Continue Shopping</a>
+</div>
+    <%- include('../partials/footer') %>

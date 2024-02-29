@@ -11,19 +11,15 @@
           <div><%= product.color %></div>
           <div>Price: $</div>
           <div><%= product.price %></div>
-  <form action="/orders/<%= product._id %>" method="POST">
-    <button type="submit">Add to Cart</button>
-  </form>
         </section>
-
-<a href="/orders">HERE</a>
 
         <br /><br />
 
         <img class="image" src="https://i.etsystatic.com/39257071/r/il/b5fdc0/5432097254/il_794xN.5432097254_clu2.jpg">
         <br /><br />
-        <button disabled>Add to Cart</button>
-
+        <form action="/orders/<%= product._id %>" method="POST">
+          <button type="submit">Add to Cart</button>
+        </form>
         <br /><br />
 
     <h2 class="title">Sold By: <%= seller.username %></h2>
