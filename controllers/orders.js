@@ -1,4 +1,6 @@
 const Order = require('../models/order');
+const User = require('../models/user');
+const Product = require('../models/product');
 
 module.exports = {
     index,
@@ -8,8 +10,8 @@ module.exports = {
 
 async function index(req, res) {
     try {
-        const orders = await Order.find({ username: req.params.username }).populate('products');
-        // Calc total price of cart
+        const userId = req.params.userId
+        const orders = await Order.find({ username: req.params.username }).populate('items');
         let total = 0;
         if (orders.length > 0) {
             orders.forEach(order => {
@@ -27,10 +29,13 @@ async function index(req, res) {
     }
 }
 
+
+
 async function create(req, res) {
     try {
         // Get user's ID from the req
-        const username = req.params.username;
+        const userId = req.params.userId;
+        const productId = req.params.productId;
 
         // Find product in the db using product ID from the req parameters
         const product = await Product.findById(req.params.productId);
@@ -40,42 +45,33 @@ async function create(req, res) {
             return res.status(404).send('Product not found');
         }
 
-        // Check if the buyer has an existing order with the seller
-        const existingOrder = await Order.findOne({ seller: product.seller, buyer: googleId });
+        // Find the user's order
+        let order = await Order.findOne({ user: userId });
 
-        // If the buyer has an existing order, check if the item already exists in the order
-        if (existingOrder) {
-            const existingItem = existingOrder.items.find(item => item.product.equals(product._id));
-            if (existingItem) {
-                // If the item already exists, no need to add it again
-                return res.redirect('/products/' + req.params.productId);
-            } else {
-                // If the item doesn't exist, add it to the existing order
-                existingOrder.items.push({
-                    product: product._id,
-                    price: product.price
-                });
-                await existingOrder.save();
-                return res.redirect('/products/' + req.params.productId); // Redirect to product detail page
-            }
+        // If the order doesn't exist, create a new one
+        if (!order) {
+            order = new Order({ user: userId, items: [] });
         }
 
-        // If no existing order, create a new order and add the item
-        const newOrder = new Order({
-            buyer: username,
+        // Add the product to the order
+        order.items.push({
             seller: product.seller,
-            items: [{
-                product: product._id,
-                price: product.price
-            }]
+            color: product.color,
+            category: product.category,
+            name: product.name,
+            price: product.price,
         });
-        await newOrder.save();
-        return res.redirect('/products/' + req.params.productId); // Redirect to product detail page using specific product ID
+
+        // Save the order
+        await order.save();
+        
+        return res.redirect('/orders'); // Redirect to the orders page
     } catch (error) {
         console.error(error);
         return res.status(500).send('Internal Server Error');
     }
 }
+
 
 async function deleteOrder(req, res) {
     try {
@@ -85,6 +81,8 @@ async function deleteOrder(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
+
+
 
 
 
@@ -110,5 +108,51 @@ async function deleteOrder(req, res) {
 //         res.redirect('/orders');
 //     } catch (error) {
 //         res.status(500).send('Internal Server Error');
+//     }
+// }
+
+
+// async function create(req, res) {
+//     try {
+        // Get user's ID from the request parameters
+//         const userId = req.params.userId;
+
+         // Find the product in the database using the product ID from the request parameters
+//         const product = await Product.findById(req.params.productId);
+
+//         // Check if the product exists
+//         if (!product) {
+//             return res.status(404).send('Product not found');
+//         }
+
+         // Find the user's order
+//         let order = await Order.findOne({ user: userId });
+
+        // If the order doesn't exist, create a new one
+//         if (!order) {
+//             order = new Order({ user: userId, items: [] });
+//             await order.save();
+//         }
+
+         // Check if the product already exists in the order
+//         if (order.items.some(item => item.product.equals(req.params.productId))) {
+             // Item already exists in the order, do not add it again
+//             return res.redirect('/orders');
+//         }
+
+         // Add the product to the order
+//         order.items.push({
+//             product: req.params.productId,
+//             price: product.price,
+//         });
+
+         // Save the order
+//         await order.save();
+        
+        // Redirect back to the product detail page
+//         return res.redirect('/products/' + req.params.productId);
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).send('Internal Server Error');
 //     }
 // }

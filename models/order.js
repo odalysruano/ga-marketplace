@@ -7,10 +7,10 @@ const orderSchema = new Schema({
    items: [productSchema.schema],
    googleId: {
     type: String,
-    required: true,
+    required: false, //FOR NOW JUST TO TEST
    },
 }, {
-    timestamps: true
+    timestamps: true,
 });
 
 module.exports = mongoose.model('Order', orderSchema);

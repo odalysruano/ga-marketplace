@@ -26,7 +26,6 @@
                     <p>Product: <%= order.product %></p>
                     <p>Price: $<%= order.price %></p>
                     <!-- link to view product details page -->
-                    <a href="/products/<%= order.product._id %>">View Product Details</a>
                     
                     <!-- Display delete button if user owns the order -->
                     <% if (user && order.userId === user._id) { %>
@@ -40,11 +39,12 @@
         </ul>
         
         <!-- Display checkout button -->
-        <form action="/checkout" method="GET">
-            <!-- Disable checkout button if cart is empty -->
-            <button <% if (isEmpty) { %> disabled <% } %>>Checkout</button>
-        </form>
+
     <% } %>
+    <form action="/checkout" method="GET">
+        <!-- Disable checkout button if cart is empty -->
+        <button <% if (isEmpty) { %> disabled <% } %>>Checkout</button>
+    </form>
     
     <!-- link to back to homepage -->
     <a href="/">Continue Shopping</a>
