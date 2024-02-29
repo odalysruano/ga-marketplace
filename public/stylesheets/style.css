@@ -344,6 +344,7 @@
     border-radius: 50%;
     padding: 10px;
     background-color: darkgrey;
+    margin-right: 20px;
   }
 
   .usr-head {
@@ -396,7 +397,7 @@
     padding: 20px;
     display: inline-block;
     width: 100%;
-    text-align: right;
+    text-align: left;
   }
 
   .add-form-btn-wrp {
