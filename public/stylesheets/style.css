@@ -11,7 +11,16 @@
 @media only screen and (min-width: 320px) {
   body {
     background-color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: 
+      "nav"
+      "main"
+      "footer"
   }
+
   nav {
     display: flex;
     align-items: center;
@@ -23,9 +32,9 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 55px;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.9);
+    grid-area: nav;
   }
 
   .logo {
@@ -71,12 +80,13 @@
   }
 
   footer {
-    position: absolute;
+    position: fixed;
     right: 0;
-    bottom: 0;
     left: 0;
     background: #111;
     color: #fff;
+    bottom: 0;
+    grid-area: footer;
   }
 
   .socials {
@@ -178,68 +188,6 @@
     font-size: 20px;
   }
 
-/* user stuff temporary --> */
-#user-page-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
-}
-
-#user-list {
-  border: solid 1px;
-  padding: 20px;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
-
-#prv-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
-}
-
-#prv-itm {
-  border: solid 1px;
-  padding: 20px;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
-
-#rev-wrap{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
-}
-
-#usr-rev{
-  border: solid 1px;
-  padding: 20px;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
-
-#add-wrap{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
-}
-
-#add-form {
-  border: solid 1px;
-  padding: 20px;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
-
-/* temporary --> */
   .container {
     display: flex;
     flex-direction: column;
@@ -247,6 +195,7 @@
     padding: 20px;
     overflow-y: scroll;
     margin-top: 50px;
+    grid-area: main;
   }
 
   #show-detail-page {
@@ -267,6 +216,67 @@
 
   .visit-shop {
     width: 200px;
+    text-align: center;
+  }
+
+  /* user stuff temporary --> */
+  #user-page-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+  }
+
+  #user-list {
+    border: solid 1px;
+    padding: 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  #prv-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+  }
+
+  #prv-itm {
+    border: solid 1px;
+    padding: 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  #rev-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+  }
+
+  #usr-rev{
+    border: solid 1px;
+    padding: 20px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  #add-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+  }
+
+  #add-form {
+    border: solid 1px;
+    padding: 20px;
+    display: inline-block;
+    width: 100%;
     text-align: center;
   }
 }

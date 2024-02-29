@@ -1,76 +1,81 @@
 <%- include('../partials/header', { title: 'User-Page' }) %>
 
-<div id="user-page-wrap">
-  <table id="user-list">
-      <thead>
-          <tr>
-              <th>UserName</th>
-              <th>Email</th>
-              <th><a href="/users/<%= user._id %>/items"><button>Add Items</button></a></th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td><%= user.username %></td>
-              <td><%= user.email %></td>
-          </tr>
-      </tbody>
-  </table>
-</div>
+<div class="container">
 
-<form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
-    <input type="text" name="newUsername" placeholder="Enter new username" required>
-    <button type="submit">Update Username</button>
-  </form>
-
-
-<h2>Items For Sale</h2>
-
-<form id="rmv-itm-form" method="POST" action="/users/<%= user._id %>/removeItems">
-    <div id="prv-wrap">
-        <table id="prv-itm">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% user.itemsForSale.forEach(function(item) { %>
-                    <tr>
-                        <td><%= item.name %></td>
-                        <td><%= item.description %></td>
-                        <td>$<%= item.price %></td>
-                        <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
-                    </tr>
-                <% }); %>
-            </tbody>
-        </table>
+    <div id="user-page-wrap">
+    <table id="user-list">
+        <thead>
+            <tr>
+                <th>UserName</th>
+                <th>Email</th>
+                <th><a href="/users/<%= user._id %>/items"><button>Add Items</button></a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+            </tr>
+        </tbody>
+    </table>
     </div>
 
-    <button type="submit">Remove Selected Items</button>
-</form>
+    <form id="update-username-form" method="POST" action="/users/<%= user._id %>/updateUsername">
+        <input type="text" name="newUsername" placeholder="Enter new username" required>
+        <button type="submit">Update Username</button>
+    </form>
 
-<div id="rev-wrap">
-  <table id="usr-rev">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Rating</th>
-            <th>Comment</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% user.reviews.forEach(function(review) { %>
+
+    <h2>Items For Sale</h2>
+
+    <form id="rmv-itm-form" method="POST" action="/users/<%= user._id %>/removeItems">
+        <div id="prv-wrap">
+            <table id="prv-itm">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% user.itemsForSale.forEach(function(item) { %>
+                        <tr>
+                            <td><%= item.name %></td>
+                            <td><%= item.description %></td>
+                            <td>$<%= item.price %></td>
+                            <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+        <button type="submit">Remove Selected Items</button>
+    </form>
+
+    <div id="rev-wrap">
+    <table id="usr-rev">
+        <thead>
             <tr>
-                <td><%= review.product.name %></td>
-                <td><%= review.rating %></td>
-                <td><%= review.comment %></td>
+                <th>Product</th>
+                <th>Rating</th>
+                <th>Comment</th>
             </tr>
-        <% }); %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% user.reviews.forEach(function(review) { %>
+                <tr>
+                    <td><%= review.product.name %></td>
+                    <td><%= review.rating %></td>
+                    <td><%= review.comment %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    </div>
+
 </div>
+
 <%- include('../partials/footer') %>
