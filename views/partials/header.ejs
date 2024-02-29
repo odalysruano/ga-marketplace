@@ -23,23 +23,20 @@
 
       <% if (user) { %>
       <div class="dropdown" style="float: right">
-        <button class="dropbtn">Log Out</button>
+        <button class="dropbtn">Account</button>
         <div class="dropdown-content">
           <a href="#">Profile</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <a href="/orders">View Cart</a>
+          <a href="/logout">Log Out</a>
         </div>
       </div>
       <% } else { %>
       <a href="/auth/google" class="btn" style="float: right">Log In</a>
       <% } %>
-
       <div class="search-container">
-        <form autocomplete="off" action="/">
+        <form autocomplete="off" action="/products/filters">
           <input type="text" placeholder="Search.." name="search" />
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
       </div>
     </nav>
-  </body>
-</html>
