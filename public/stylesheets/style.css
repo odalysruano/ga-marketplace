@@ -47,7 +47,7 @@
   span {
     color: #8304b7;
   }
-  
+
   nav a {
     color: white;
     text-decoration: none;
@@ -323,6 +323,14 @@
 
   /* temporary --> */
 
+  #avt-img {
+    border-radius: 50%;
+  }
+
+  .usr-head {
+    font-size: 16px;
+  }
+
   #prdct-img {
     height: 60px;
     width: auto;
@@ -438,3 +446,19 @@
     height: 0px;
   }
 }
+
+#edt-btn-wrap {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#edt-btn {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.itm-head {
+  font-size: 20px;
+}
+/* <-- user stuff temporary */
