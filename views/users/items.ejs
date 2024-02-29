@@ -1,0 +1,50 @@
+<%- include('../partials/header', { title: 'User-Items' }) %>
+
+<div class="container">
+  <h2>Add Item For Sale</h2>
+  <div id="add-wrap">
+      <div id="add-form">
+          <form action="/users/<%= user._id %>/items/add" method="post">
+              <label for="name">Product:</label>
+              <input type="text" id="name" name="name" required><br>
+          
+              <label for="category">Category:</label>
+              <select id="category" id="category" name="category" required>
+                <option value="TOP">Top</option>
+                <option value="BOT">Bottom</option>
+                <option value="JAC" selected>Jacket</option>
+                <option value="SHO">Shoes</option>
+                <option value="ACC">Accesories</option>
+              </select><br>
+          
+              <label for="color">Color:</label>
+              <select id="color" id="color" name="color" required>
+                <option value="RED">Red</option>
+                <option value="BLU">Blue</option>
+                <option value="YLW" selected>Yellow</option>
+                <option value="PRP">Purple</option>
+                <option value="GRN">Green</option>
+                <option value="ORG">Orange</option>
+                <option value="BRW">Brown</option>
+                <option value="BLK">Black</option>
+                <option value="WHT">White</option>
+              </select><br>
+          
+              <label for="price">Price:</label>
+              <input type="text" id="price" name="price" required><br>
+
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" name="image"><br>
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description"><br>
+
+              <button type="submit">Add Item</button>
+          </form>
+          <a href="/users/<%= user._id %>"><button>Go Back</button></a>
+      </div>
+  </div>
+</div>
+
+
+<%- include('../partials/footer') %>
