@@ -52,8 +52,6 @@
                         <td>$<%= item.price %></td>
                         <td>
                             <img src="<%= item.image %>"  id="prdct-img">
-                            <!-- <a href="/products/<%= item._id %>">
-                                <input type="image" src="<%= item.image %>" name="image" id="prdct-img" /></a>      -->
                         </td>
                         <td><a href="/products/<%= item._id %>">Details</a></td>
                         <td><input type="checkbox" name="itemIds" value="<%= item._id %>"></td>
@@ -63,32 +61,11 @@
             </tbody>
         </table>
     </div>
+    <button type="submit" id="edt-btn">Remove Selected Items</button>
 </form>
 <div id="edt-btn-wrap">
     <a href="/users/<%= user._id %>/items"><button id="edt-btn">Add Items</button></a>
-    <button type="submit" id="edt-btn">Remove Selected Items</button>
-</div>
-<!-- 
-<div id="rev-wrap">
-  <table id="usr-rev">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Rating</th>
-            <th>Comment</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% user.reviews.forEach(function(review) { %>
-            <tr>
-                <td><%= review.product.name %></td>
-                <td><%= review.rating %></td>
-                <td><%= review.comment %></td>
-            </tr>
-        <% }); %>
-    </tbody>
-</table>
-</div> -->
+ </div>
 </div>
 
 </div>

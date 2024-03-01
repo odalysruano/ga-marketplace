@@ -406,6 +406,12 @@
     min-height: 50vh;
   }
 
+  #rmv-itm-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   #usr-rev {
     border: solid 1px;
     padding: 20px;
@@ -445,7 +451,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 755px;
+  padding: 20px;
 }
 
 #edt-btn {
@@ -530,4 +536,8 @@
 
 .cart-items {
   text-align: center;
+}
+
+.cart-item {
+  margin-top: 10px;
 }
