@@ -15,15 +15,18 @@
                 <li>
                     <!-- Display order information -->
                     <h3>Order ID: <%= order._id %></h3>
+                    <br><br>
                     <ul>
                         <% order.items.forEach(item => { %>
                             <li>
-                                <p>Product: <%= item.name %></p>
+                                <p><%= item.name %></p>
+                                <br>
                                 <p>Price: $<%= item.price %></p>
                                 <form action="/orders/delete/<%= item._id %>" method="POST">
                                     <button type="submit">Remove Item</button>
                                 </form>
                             </li>
+                            <br><br>
                         <% }); %>
                     </ul>
                 </li>
@@ -31,6 +34,8 @@
         </ul>
         <h3>Total: $<%= total.toFixed(2) %></h3>
     <% } %>
+
+    <br><br>
 
     <% console.log("Is cart empty?", isEmpty); %> <!--remove after -->
     <form action="/checkout" method="GET">

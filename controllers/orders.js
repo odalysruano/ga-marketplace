@@ -40,6 +40,7 @@ async function index(req, res) {
 
 async function create(req, res) {
     try {
+        
         // Check if user information is available in the request
         console.log('User Object:', req.user);
         if (!req.user || !req.user.googleId) {
