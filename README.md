@@ -31,7 +31,7 @@ This app is a marketplace that allows users to buy & sell clothing online. Users
 - Passport.js
 
 ## Getting Started
-Link to App:
+Link to App: https://arcane-meadow-90413-3bd59a11fb6a.herokuapp.com/
 
 Trello Board: https://trello.com/b/NWYZg3Oq/sei-project-2
 
