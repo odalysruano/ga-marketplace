@@ -1,49 +1,56 @@
 <%- include('../partials/header') %>
-<body>
+
 <div class="container">
     
-  <div class="bckgrnd-crd">
+    <div class="bckgrnd-crd">
 
     <!-- Display welcome message for authenticated user -->
     <!-- <h1>Welcome,  displayName  </h1> -->
     
     <!-- Display cart contents -->
-    <h2>Cart</h2>
-    <% if (isEmpty) { %>
-        <p>Your cart is empty.</p>
-    <% } else { %>
-        <!-- Display orders in a list -->
+        <h2>Cart</h2>
+        <% if (isEmpty) { %>
+            <p>Your cart is empty.</p>
+        <% } else { %>
+            <!-- Display orders in a list -->
 
-        <ul class="cart-items">
-            <% orders.forEach(order => { %>
-                <li>
-                    <!-- Display order information -->
-                    <h3>Order ID: <%= order._id %></h3>
-                    <ul>
-                        <% order.items.forEach(item => { %>
-                            <li>
-                                <img src="<%= item.image %>" id="order-img">
-                                <p>Product: <%= item.name %></p>
-                                <p>Price: $<%= item.price %></p>
-                                <form action="/orders/delete/<%= item._id %>" method="POST">
-                                    <button type="submit">Remove Item</button>
-                                </form>
-                            </li>
-                        <% }); %>
-                    </ul>
-                </li>
-            <% }); %>
-        </ul>
-        </div>
+            <ul class="cart-items">
+                <% orders.forEach(order => { %>
+                    <li>
+                        <!-- Display order information -->
+                        <h4>Order ID: <%= order._id %></h4>
+                        <ul>
+                            <% order.items.forEach(item => { %>
+                                <li class="cart-item">
+                                    <img src="<%= item.image %>" id="order-img">
+                                    <p>Product: <%= item.name %></p>
+                                    <p>Price: $<%= item.price %></p>
+                                    <form action="/orders/delete/<%= item._id %>" method="POST">
+                                        <button type="submit">Remove Item</button>
+                                    </form>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </li>
+                <% }); %>
+            </ul>     
+        <% } %>
+        
+        <br /><br />
+
         <h3>Total: $<%= total.toFixed(2) %></h3>
-    <% } %>
 
-    <% console.log("Is cart empty?", isEmpty); %> <!--remove after -->
-    <form action="/checkout" method="GET">
-        <!-- Disable checkout button if cart is empty -->
-        <button <% if (isEmpty) { %> disabled <% } %>>Checkout</button>
-    </form>
-    <!-- link to back to homepage -->
-    <a href="/products">Continue Shopping</a>
+        <% console.log("Is cart empty?", isEmpty); %> <!--remove after -->
+        <form action="/checkout" method="GET">
+            <!-- Disable checkout button if cart is empty -->
+            <button <% if (isEmpty) { %> disabled <% } %>>Checkout</button>
+        </form>
+
+        <br /><br />
+
+        <!-- link to back to homepage -->
+        <a href="/products">Continue Shopping</a> 
+    </div>
 </div>
-    <%- include('../partials/footer') %>
+
+<%- include('../partials/footer') %>
