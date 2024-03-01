@@ -508,3 +508,7 @@ button.disabled {
 .cart-items {
   text-align: center;
 }
+
+.cart-item {
+  margin-top: 10px;
+}
