@@ -20,12 +20,12 @@ const productSchema = new Schema({
         required: true,
     },
     description: {
-      type: String,
-      required: false,
+        type: String,
+        required: false,
     },
     image: {
-      type: String,
-      required: false,
+        type: String,
+        required: false,
     },
     seller: {
         type: Schema.Types.ObjectId,

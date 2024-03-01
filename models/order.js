@@ -3,11 +3,11 @@ const productSchema = require('./product');
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
-   items: [productSchema.schema],
-   googleId: {
-    type: String,
-    required: true,
-   },
+    items: [productSchema.schema],
+    googleId: {
+        type: String,
+        required: true,
+    },
 }, {
     timestamps: true,
 });
