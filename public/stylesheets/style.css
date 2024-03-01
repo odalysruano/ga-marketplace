@@ -266,10 +266,35 @@
     letter-spacing: 2px;
     font-size: 20px;
   }
-button.disabled {
-  opacity: 0.5; /* Gray out button */
-  cursor: not-allowed; /* Change cursor to indicate button is not clickable */
-}
+  button.disabled {
+    opacity: 0.5; /* Gray out button */
+    cursor: not-allowed; /* Change cursor to indicate button is not clickable */
+  }
+  .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 120px;
+    width: 300px;
+    height: 300px;
+    margin-right: 100px;
+    justify-self: end;
+    align-self: flex-start;
+    position: fixed;
+  }
+  .orderscontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    overflow-y: scroll;
+    margin-top: 50px;
+    grid-area: main;
+  }
   .container {
     display: flex;
     flex-direction: column;
@@ -296,7 +321,7 @@ button.disabled {
     align-items: center;
     border-radius: 10px;
     padding: 30px;
-    
+    margin-left: 100px;
   }
 
   #show-detail-page {
@@ -409,12 +434,11 @@ button.disabled {
     align-items: center;
     width: 300px;
   }
-  
-  .add-form-btn {
-  border-radius: 5px;
-  width: 80px;
-  }
 
+  .add-form-btn {
+    border-radius: 5px;
+    width: 80px;
+  }
 }
 
 #edt-btn-wrap {
@@ -428,7 +452,6 @@ button.disabled {
   padding: 10px;
   border-radius: 5px;
   width: 250px;
-  
 }
 
 .itm-head {
@@ -436,74 +459,74 @@ button.disabled {
 }
 /* <-- user stuff temporary */
 
-  /* <!-- Products cards in searching --> */
-  .container2 {
-    position: relative;
-    /* min-height: 250vh; */
-    width: 100%;
-    padding-top: 5%;
-    padding-left: 8%;
-    z-index: 0;
-  }
+/* <!-- Products cards in searching --> */
+.container2 {
+  position: relative;
+  /* min-height: 250vh; */
+  width: 100%;
+  padding-top: 5%;
+  padding-left: 8%;
+  z-index: 0;
+}
 
-  .container2 .card {
-    /*margin-top:300px;*/
-    position: relative;
-    width: 22%;
-    height: 350px;
-    background-color: rgba(95, 95, 95, 0.9);
-    margin: 30px 10px;
-    padding: 20px 15px;
-    float: left;
-    display: table-cell;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    border-radius: 15px;
-  }
+.container2 .card {
+  /*margin-top:300px;*/
+  position: relative;
+  width: 22%;
+  height: 350px;
+  background-color: rgba(95, 95, 95, 0.9);
+  margin: 30px 10px;
+  padding: 20px 15px;
+  float: left;
+  display: table-cell;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
 
-  .container2 .card .card-image {
-    position: relative;
-    top: -15%;
-    left: 8px;
-    z-index: 1;
-    width: 96%;
-    height: 100%;
-    transition: 0.3s ease-in-out;
-  }
+.container2 .card .card-image {
+  position: relative;
+  top: -15%;
+  left: 8px;
+  z-index: 1;
+  width: 96%;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+}
 
-  .container2 .card .card-image img {
-    max-width: 100%;
-    border-radius: 15px;
-    height: 350px;
-    width: 100%;
-    transition: 0.3s ease-in-out;
-  }
+.container2 .card .card-image img {
+  max-width: 100%;
+  border-radius: 15px;
+  height: 350px;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+}
 
-  .container2 .card .card-content {
-    position: relative;
-    top: -240px;
-    padding: 10px 15px;
-    color: white;
-    font-size: 20px;
-    text-align: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.3s ease-in-out;
-  }
+.container2 .card .card-content {
+  position: relative;
+  top: -240px;
+  padding: 10px 15px;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
 
-  .container2 .card:hover .card-content {
-    margin-top: 30px;
-    visibility: visible;
-    opacity: 1;
-    transition-delay: 0.2s;
-  }
+.container2 .card:hover .card-content {
+  margin-top: 30px;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0.2s;
+}
 
-  .container2 .card:hover .card-image img {
-    height: 0px;
-  }
+.container2 .card:hover .card-image img {
+  height: 0px;
+}
 
-  #order-img {
-    height: 200px;
-  }
+#order-img {
+  height: 200px;
+}
 
 .cart-items {
   text-align: center;

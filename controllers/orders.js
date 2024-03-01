@@ -13,15 +13,17 @@ async function index(req, res) {
         if (!req.isAuthenticated()) {
             return res.redirect('/auth/google');
         }
-
         const googleId = req.user.googleId;
         const orders = await Order.find({ googleId }).populate('items');
         let total = 0;
-        let isEmpty = true; // Initialize isEmpty variable to true
+        let totalItems = 0;
+        let isEmpty = true;
+        //Calc total price and count total items in order
         if (orders.length > 0) {
             orders.forEach(order => {
                 order.items.forEach(item => {
                     total += item.price;
+                    totalItems++;
                 });
 
                 // Check if order is empty
@@ -31,7 +33,7 @@ async function index(req, res) {
             });
         }
 
-        res.render('orders/index', { title: 'Orders', orders, total, isEmpty });
+        res.render('orders/index', { title: 'Orders', orders, total, isEmpty, totalItems, });
     } catch (error) {
         console.log(error);
         res.status(500).send('Internal Server Error');
@@ -48,7 +50,7 @@ async function create(req, res) {
             return res.redirect('/auth/google');
         }
 
-        // Retrieve the user's googleId from the request
+        // Get the user's googleId from the request
         const googleId = req.user.googleId;
         const productId = req.params.productId;
 
@@ -57,7 +59,7 @@ async function create(req, res) {
         // Find product in the db using product ID from the req parameters
         const product = await Product.findById(productId);
 
-        // Check if the product exists
+        // Check if product exists
         if (!product) {
             return res.status(404).send('Product not found');
         }
