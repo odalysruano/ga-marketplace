@@ -400,7 +400,7 @@ button.disabled {
     padding: 20px;
     display: inline-block;
     width: 100%;
-    text-align: left;
+    text-align: center;
   }
 
   .add-form-btn-wrp {
@@ -408,7 +408,6 @@ button.disabled {
     justify-content: space-around;
     align-items: center;
     width: 300px;
-    padding: 20px;
   }
   
   .add-form-btn {
@@ -502,3 +501,10 @@ button.disabled {
     height: 0px;
   }
 
+  #order-img {
+    height: 200px;
+  }
+
+.cart-items {
+  text-align: center;
+}
